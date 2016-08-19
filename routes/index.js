@@ -6,7 +6,7 @@ var pool = mysql.createPool({
   host: 'localhost:3306',
   user: 'root',
   database: 'blogdb',
-  password: '161718'
+  password: 'arshad'
 });
 
 /* GET home page. */
@@ -15,9 +15,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/show', function(req, res, next){
-  pool.getConnections(function(err, connection) {
+  pool.getConnection(function(err, connection) {
     var sql = "SELECT * from user";
-
+    console.log("AWDAWD");
     connection.query(sql, function(err, row){
       if(err) console.error("err: "+err);
       console.log("row: "+JSON.stringify(row));
