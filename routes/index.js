@@ -6,7 +6,7 @@ var pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   database: 'blogdb',
-  password: 'arshad'
+  password: '12345'
 });
 
 /* GET home page. */
@@ -25,7 +25,7 @@ router.get('/show', function(req, res, next){
       connection.release();
     })
   })
-})
+});
 
 
 router.post('/validate', function(req, res, next) {
@@ -37,7 +37,7 @@ router.post('/validate', function(req, res, next) {
 
     console.log(name,password);
 
-    var sqlForSelectList = "SELECT * FROM user where name=\""+name+"\" and password=\""+password+"\"";
+    var sqlForSelectList = "SELECT * FROM user where name='\""+name+"\"'' and password='\""+password+"\"'";
     //var sqlForSelectList = "SELECT * FROM test1 where id=\"wise\" and password=\"lab\"";
     //var sqlAdd = "INSERT into test values(5,\"Hwajangnim\")";
     connection.query(sqlForSelectList, function(err, rows){
@@ -47,7 +47,7 @@ router.post('/validate', function(req, res, next) {
       connection.release();
     })
   })
-})
+});
 
 router.get('/showall/:userId', function(req, res, next){
   pool.getConnection(function(err, connection) {
@@ -60,7 +60,7 @@ router.get('/showall/:userId', function(req, res, next){
       connection.release();
     })
   })
-})
+});
 
 router.post('/addpost', function(req, res, next) {
   pool.getConnection(function(err, connection){
@@ -88,7 +88,7 @@ router.post('/addpost', function(req, res, next) {
       connection.release();
     })
   })
-})
+});
 
 router.get('/showpost/:idPost', function(req, res, next){
   pool.getConnection(function(err, connection) {
@@ -106,7 +106,7 @@ router.get('/showpost/:idPost', function(req, res, next){
       connection.release();
     })
   })
-})
+});
 
 router.get('/delete/:idPost', function(req, res, next){
   pool.getConnection(function(err, connection) {
@@ -125,7 +125,7 @@ router.get('/delete/:idPost', function(req, res, next){
       connection.release();
     })
   })
-})
+});
 
 
 
