@@ -2,26 +2,28 @@
  * Created by ajou on 8/20/2016.
  */
 var module = angular.module('app',[]);
-module.controller('MainCtrl', ['$scope','$http',function($resource,$scope,$http){
+module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
     alert("hay");
 
     $scope.islogin=function () {
-    alert("clicked");
+    //alert("clicked");
 
         $http({
             method: 'POST',
             url: 'http://localhost:3000/validate',
-            data: {name: $scope.iduser, password: $scope.passx}
+           data: { password: $scope.passx , name: $scope.iduser}
+        //   data:{name : 'aaaa', password:'aaaaa'}
 
 
         })
             .success(function (data ,status, headers, config) {
                 console.log("sucsess");
-                alert($scope.iduser);
-                if (data.length) {
+               // alert($scope.iduser);
+                if (data) {
                     alert("Login Success :D ");
-                    $scope.islogin = true;
+
                     window.location = "home.html"
+
 
                 } else {
                     alert("Login Failed Please Retry :(");
@@ -34,19 +36,20 @@ module.controller('MainCtrl', ['$scope','$http',function($resource,$scope,$http)
             });
     };
     $scope.addnew=function (data,status,headers,config) {
+       // alert("clickes");
         $http({
             method: 'POST',
-            url: 'http://localhost:3000/showall',
+            url: 'http://localhost:3000/showall/:userId',
             data: {
-                'text': $scope.text,//textdapet dari ara
-                'Name ': $scope.name,//dapet dari ara
-                'id': $scope.iduser//gatau dari mana
+                'user_id': $scope.username,//textdapet dari ara
+                'content': $scope.post//dapet dari ara
+                //'id': $scope.iduser//gatau dari mana
             }
 
                 .success(function (data) {
-                    if (data){
+                        if (data){
                         alert("Addiing Post Success");
-                        window.location='home.html'//dari ara
+                        window.location='login.html'//dari ara
                     }else {
                         alert("Failed Adding Post");
                     }
@@ -54,7 +57,7 @@ module.controller('MainCtrl', ['$scope','$http',function($resource,$scope,$http)
 
         });
     };
-    $scope.addpost=function () {
+    $scope.addpost=function (status, headers, config) {
         $http({
 
         })

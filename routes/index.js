@@ -37,7 +37,8 @@ router.post('/validate', function(req, res, next) {
 
     console.log(name,password);
 
-    var sqlForSelectList = "SELECT * FROM user where name='\""+name+"\"'' and password='\""+password+"\"'";
+    var sqlForSelectList = "SELECT * FROM user where name=\""+name+"\" and password=\""+password+"\"";
+    console.log(sqlForSelectList);
     //var sqlForSelectList = "SELECT * FROM test1 where id=\"wise\" and password=\"lab\"";
     //var sqlAdd = "INSERT into test values(5,\"Hwajangnim\")";
     connection.query(sqlForSelectList, function(err, rows){
