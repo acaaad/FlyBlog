@@ -4,7 +4,20 @@
 var module = angular.module('app',[]);
 module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
     alert("hay");
-
+    $http({
+        method: 'GET',
+        url: 'http://localhost:3000/showall/:userId'
+    })
+        .success(function(data, status, headers, config) {
+            if( data ) {
+                $scope.posts= data;
+            }
+            else {
+            }
+        })
+        .error(function(data, status, headers, config) {
+            console.log(status);
+        });
     $scope.islogin=function () {
     //alert("clicked");
 
@@ -51,6 +64,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
                 .success(function (data,status,headers,config) {
                     console.log("hay");
                         if (data){
+
                         alert("Addiing Post Success");
                         window.location='blog.html';//dari ara
                     }else {
@@ -64,6 +78,10 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
         alert("clicked");
         window.location='edit.html';
     }
+
+    //$scope.showpost=function (data,status,headers,config) {
+
+    //}
 }]);
 // $scope.validate = function(){
 //     console.log("HIA");
