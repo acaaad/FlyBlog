@@ -12,9 +12,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-resource.js"></script>
+  <script src="../model/test.js"></script>
 </head>
 
-<body ng-app="myApp" ng-controller="MainCtrl">
+<body ng-app="app" ng-controller="MainCtrl">
   <div id="main">
 
     <!-- begin header -->
@@ -33,7 +34,7 @@
     <!-- begin content -->
     <div id="site_content">
       <div id="left_content">
-        <p><button onclick="editpost.html" style="padding: 2pt">Create New Post</button></p>
+        <p><button id="createnew" name="createnew" style="padding: 2pt" ng-click="addnew()">Create New Post</button></p>
         <div id="blog_container" ng-repeat="">
 
           <div class="blog"><h2>{{bulan}}</h2><h3>{{tanggal}}</h3></div>

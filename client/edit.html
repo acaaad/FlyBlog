@@ -12,9 +12,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-resource.js"></script>
+  <script src="../model/test.js"></script>
 </head>
 
-<body ng-app="myApp" ng-controller="MainCtrl">
+<body ng-app="app" ng-controller="MainCtrl">
   <div id="main">
 
     <!-- begin header -->
@@ -35,9 +36,9 @@
       <div id="left_content">
         <form style="padding-top: 20pt" ng-submit="submit()">
           <br><b>Create New Post:</b><br/><br/>
-          Title:<br/><input type="text" id="titletext"><br/>
-          Content: <textarea id="blogtext" cols="70" rows="30"></textarea><br/><br/>
-          <input type="submit" value="Submit" style="padding: 3pt"><br/><br/>
+          Title:<br/><input type="text" id="titletext" name="titletext" ng-model="titletext"><br/>
+          Content: <textarea id="blogtext" name="blogtext" cols="70" rows="30" ng-model="blogtext"></textarea><br/><br/>
+          <input type="submit" value="Submit" style="padding: 3pt" ng-click="addpost()"><br/><br/>
         </form>
       </div>
       </div>

@@ -11,7 +11,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
         $http({
             method: 'POST',
             url: 'http://localhost:3000/validate',
-           data: { password: $scope.passx , name: $scope.iduser}
+           data: { password: $scope.passx , name: $scope.passx}
         //   data:{name : 'aaaa', password:'aaaaa'}
 
 
@@ -22,7 +22,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
                 if (data) {
                     alert("Login Success :D ");
 
-                    window.location = "home.html"
+                    window.location = "blog.html"
 
 
                 } else {
@@ -35,32 +35,34 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
 
             });
     };
-    $scope.addnew=function (data,status,headers,config) {
-       // alert("clickes");
+    $scope.addpost=function (data,status,headers,config) {
+       alert("clickes");
         $http({
             method: 'POST',
-            url: 'http://localhost:3000/showall/:userId',
+            url: 'http://localhost:3000/addpost',
             data: {
-                'user_id': $scope.username,//textdapet dari ara
-                'content': $scope.post//dapet dari ara
-                //'id': $scope.iduser//gatau dari mana
+                'user_id': 1,//textdapet dari ara
+                'content': $scope.blogtext,//dapet dari ara
+                'title': $scope.titletext
             }
+                //'id': $scope.iduser//gatau dari mana
+        })
 
-                .success(function (data) {
+                .success(function (data,status,headers,config) {
+                    console.log("hay");
                         if (data){
                         alert("Addiing Post Success");
-                        window.location='login.html'//dari ara
+                        window.location='blog.html';//dari ara
                     }else {
                         alert("Failed Adding Post");
                     }
                 })
 
-        });
-    };
-    $scope.addpost=function (status, headers, config) {
-        $http({
+        };
 
-        })
+    $scope.addnew=function (status, headers, config) {
+        alert("clicked");
+        window.location='edit.html';
     }
 }]);
 // $scope.validate = function(){

@@ -66,18 +66,20 @@ router.get('/showall/:userId', function(req, res, next){
 router.post('/addpost', function(req, res, next) {
   pool.getConnection(function(err, connection){
     //if(err) throw err;
+    console.log("addpost");
     var user_id = req.body.user_id;
     var content = req.body.content;
+    var title = req.body.title;
 
     //console.log(user_id,content);
     var d = new Date();
     var fulldate = ""+d.getDate()+"-"+(d.getMonth()+1)+"-"+d.getFullYear();
-
-    var sqlForSelectList = "insert into blogpost (post, date, user_id) values (\""+content+"\", \""+fulldate+"\","+user_id+")";
+    var sqlForSelectList = "insert into blogpost (post, date, user_id, title) values (\""+content+"\", \""+fulldate+"\", "+user_id+",\""+title+"\")";
+    console.log(sqlForSelectList);
 
     connection.query(sqlForSelectList, function(err, rows){
       if(err){
-        console.log(err.code);
+        console.log(err);
         if(err.code == "ER_NO_REFERENCED_ROW_2" || err.code == "ER_NO_REFERENCED_ROW") {
           res.status(500).send("No user assigned with that id!");
         }
