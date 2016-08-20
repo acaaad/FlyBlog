@@ -127,6 +127,33 @@ router.get('/delete/:idPost', function(req, res, next){
   })
 })
 
+router.post('/update', function(req, res, next) {
+  pool.getConnection(function(err, connection){
+    //if(err) throw err;
+    var post_id = req.body.post_id;
+    var content = req.body.content;
+
+    //console.log(user_id,content);
+    var d = new Date();
+    var fulldate = ""+d.getDate()+"-"+(d.getMonth()+1)+"-"+d.getFullYear();
+
+    var sqlForSelectList = "update blogpost set post=\""+content+"\" where id="+post_id;
+
+    connection.query(sqlForSelectList, function(err, rows){
+      if(err){
+        console.log(err);
+        if(err.code == "ER_NO_REFERENCED_ROW_2" || err.code == "ER_NO_REFERENCED_ROW") {
+          res.status(500).send("No user assigned with that id!");
+        }
+      }
+      else{
+        console.log("rows: "+ JSON.stringify(rows));
+        res.status(200).send("post updated!");
+      }
+      connection.release();
+    })
+  })
+})
 
 
 
