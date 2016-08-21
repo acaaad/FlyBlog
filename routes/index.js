@@ -19,6 +19,14 @@ router.get('/home', function(req, res, next){
   res.sendFile(path.join(__dirname+'/../public/home.html'));
 });
 
+router.get('/login', function(req, res, next){
+  res.sendFile(path.join(__dirname+'/../public/login.html'));
+});
+
+router.get('/post', function(req, res, next){
+  res.sendFile(path.join(__dirname+'/../public/edit.html'));
+});
+
 router.get('/show', function(req, res, next){
   pool.getConnection(function(err, connection) {
     if(err) throw err;
