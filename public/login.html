@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Login</title>
+    <!--<meta name="description" content="website description" />
+    <meta name="keywords" content="website keywords, website keywords" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />-->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/dark.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-resource.js"></script>
+    <script src="../model/test.js"></script>
+
+</head>
+
+<body ng-app="app" ng-controller="MainCtrl">
+<div id="main">
+
+    <!-- begin header -->
+    <header>
+        <div id="logo"><h1>Login</h1></div>
+    </header>
+    <!-- end header -->
+
+    <!-- begin content -->
+    <div id="site_content">
+        <div id="left_content">
+            <form style="text-align:center;padding-top: 20pt">
+
+
+                ID:<br/><input type="text" id="iduser" name="iduser" ng-model ="isuder"><br/>
+                Password:<br/><input type="text" id="passx" name="passx" ng-model="passx"><br/><br/><br/>
+
+                <input type="submit" value="Login" style="padding: 3pt"ng-click="islogin()"><br/><br/>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- end content -->
+
+<!-- begin footer -->
+<footer>
+    <p>Copyright &copy; 2016 Group1</p>
+</footer>
+<!-- end footer -->
+
+</div>
+<!-- javascript at the bottom for fast page loading -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing-sooper.js"></script>
+<script type="text/javascript" src="js/jquery.sooperfish.js"></script>
+<!-- initialise sooperfish menu -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('ul.sf-menu').sooperfish();
+    });
+</script>
+</body>
+</html>

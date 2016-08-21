@@ -8,10 +8,15 @@ var pool = mysql.createPool({
   database: 'blogdb',
   password: 'arshad'
 });
+var path = require("path");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
+});
+
+router.get('/home', function(req, res, next){
+  res.sendFile(path.join(__dirname+'/../public/home.html'));
 });
 
 router.get('/show', function(req, res, next){
