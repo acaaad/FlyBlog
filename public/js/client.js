@@ -20,6 +20,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
                 console.log("sucsess");
                 // alert($scope.iduser);
                 if (data) {
+                    alert(data);
                     alert("Login Success :D ");
 
                     window.location = "home.html"

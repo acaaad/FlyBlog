@@ -27,7 +27,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
         .success(function (data, status, headers, config) {
             if (data){
                 alert("hayyyyyyyy");
-                window.location="blog.html";
+                window.location="blog.ejs";
 
 
             }else {
@@ -49,7 +49,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
             .success(function (data ,status, headers, config) {
                 console.log("sucsess");
                 // alert($scope.iduser);
-                if (data) {
+                if (data.length==1) {
                     alert("Login Success :D ");
 
                     window.location = "home"
@@ -108,7 +108,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
     //             .success(function (data,status,headers,config){
     //                 if (data){
     //                     alert("hayyy");
-    //                     window.location='blog.html'
+    //                     window.location='blog.ejs'
     //                 }else {
     //                     alert("Failed");
     //                 }

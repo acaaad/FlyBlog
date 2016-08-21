@@ -36,16 +36,22 @@
       <div id="left_content">
         <p><button id="createnew" name="createnew" style="padding: 2pt" ng-click="addnew()">Create New Post</button></p>
         <div id="blog_container" >
-          <h4><strong> Title: </strong>{{post.title}}<br/></h4>
-          <h4><strong> Post: </strong>{{post.post}}<br/></h4>
+          <h4><strong> Title: </strong><%= post[0]["title"] %> <br/></h4>
+          <h4><strong> Post: </strong><%= post[0]["post"] %><br/></h4>
           <!--<strong> Post: </strong>{{post.post}}<br><br>-->
+          <script type='text/javascript'>
+            // rows = <%-JSON.parse(JSON.stringify(post))%>
+            var jeson = '{"0":{"id":"35","name":"Ahamed shajeer","date":"2014-03-03","age":"25"},"1":{"id":"36","name":"Meshajeer","date":"0000-00-00","age":"25"},"2":{"id":"37","name":"Iam shajeer","date":"0000-00-00","age":"25"},"average_age":25,"count":3}';
+            obj = JSON.parse(jeson);
 
+            document.write();
+          </script>
 
           <!--<div class="blog"><h2>{{bulan}}</h2><h3>{{tanggal}}</h3></div>
           <h4 class="select"><a onclick="showpost()">{{pos}}</a></h4>
           <p>{{contentpreview}} <a onclick="showpost()">read more.....</a></p>-->
 
-
+        <h1></h1>
         </div>
       </div>
       <div id="right_content">

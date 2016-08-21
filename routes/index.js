@@ -16,7 +16,18 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/home', function(req, res, next){
-  res.sendFile(path.join(__dirname+'/../public/home.html'));
+  if(!req.session.user){
+    //res.sendFile(path.join(__dirname+'/../public/login.html'));
+    res.redirect('login');
+  }
+  else{
+    res.sendFile(path.join(__dirname+'/../public/home.html'));
+  }
+});
+
+router.get('/logout', function(req, res, next){
+    req.session.destroy();
+    res.redirect('login');
 });
 
 router.get('/login', function(req, res, next){
@@ -57,6 +68,10 @@ router.post('/validate', function(req, res, next) {
     connection.query(sqlForSelectList, function(err, rows){
       if(err) console.error("err: "+err);
       console.log("rows: "+ JSON.stringify(rows));
+      if(rows.length!=0){
+        req.session.user = name;
+        console.log("BIASA AJA "+ rows.json);
+      }
       res.json(rows);
       connection.release();
     })
@@ -117,14 +132,25 @@ router.get('/showpost/:idPost', function(req, res, next){
         res.status(500).send("no post with that id");
       }
       else{
-        console.log("row: "+JSON.stringify(row));
-        res.json(row);
+        //console.log("row: "+JSON.stringify(row));
+        var context = JSON.stringify(row);
+        var jeson = JSON.parse(context);
+        res.render('blog', {post: jeson});
       }
+
       connection.release();
     })
   })
 });
 
+router.get('/dashboard', function(req, res){
+  if(!req.session.user){
+    return res.status(401).send();
+  }
+  else{
+    return res.status(200).send("Berhasil masuk!");
+  }
+})
 router.get('/delete/:idPost', function(req, res, next){
   pool.getConnection(function(err, connection) {
     if(err) throw err;
