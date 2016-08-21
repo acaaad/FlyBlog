@@ -68,8 +68,11 @@ router.post('/validate', function(req, res, next) {
     connection.query(sqlForSelectList, function(err, rows){
       if(err) console.error("err: "+err);
       console.log("rows: "+ JSON.stringify(rows));
-      if(rows.length!=0){
+    if(rows.length!=0){
+       // var context = JSON.stringify(row);
+       // var jeson = JSON.parse(context);
         req.session.user = name;
+        //freq.session.id = jeson[0]["id"];
         console.log("BIASA AJA "+ rows.json);
       }
       res.json(rows);
@@ -171,7 +174,8 @@ router.get('/delete/:idPost', function(req, res, next){
       //   console.log("row: "+JSON.stringify(row));
       //   res.json(row);
       // }
-      res.send(row);
+      //res.send(row);
+      res.redirect('../home');
       connection.release();
     })
   })

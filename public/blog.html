@@ -12,7 +12,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-resource.js"></script>
-  <script src="/../js/test.js"></script>
+  <script src="js/test.js"></script>
 </head>
 
 <body ng-app="app" ng-controller="MainCtrl">
@@ -54,7 +54,7 @@
           <p>{{blogcontent}}</p>
           <ul class="sf-menu" id="editpost">
             <li style="padding-right: 12pt"><a href="edit.html">Edit </a></li>
-            <li><a href="home.html">Delete</a></li>
+            <li ng-click="delete()">Delete</li>
           </ul>
           <form style="padding-top: 20pt" ng-submit="submitcomment()">
             <br>Add Comment:<br/><br/>

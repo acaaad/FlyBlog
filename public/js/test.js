@@ -72,8 +72,8 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
             url: 'http://localhost:3000/addpost',
             data: {
                 'user_id': 1,//textdapet dari ara
-                'content': $scope.blogtext,//dapet dari ara
-                'title': $scope.titletext
+                'content': $scope.blogtext,//dapet dari ara Commentid
+                'title': $scope.titletext//content
             }
             //'id': $scope.iduser//gatau dari mana
         })
@@ -90,6 +90,30 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
             })
 
     };
+
+    $scope.comments=function (data,status,headers,config) {
+        alert("clickedcomment")
+        $http({
+            methode:"POST",
+            url:
+            data  {
+                'commentid'=$scope.commentid,
+                 'content'=$scope.content
+
+        }
+        )}
+        .success(function (data,status,headers,config) {
+            console.log("hay");
+            if (data){
+
+                alert("Addiing Post Success");
+                window.location='home';//dari ara
+            }else {
+                alert("Failed Adding Post");
+            }
+
+        })
+    
 
     $scope.addnew=function (status, headers, config) {
         alert("clicked");
@@ -120,26 +144,19 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
         alert("hay delete func");
         $http({
 
-            method: 'POST',
-            url: 'http://localhost:3000/delete/:idPost',
-            data: {
-
-                'content': $scope.blogtext,//dapet dari ara
-                'title': $scope.titletext
-            }
+            method: 'GET',
+            url: 'http://localhost:3000/delete/:id'
+        })
                 .success(function (data,status,headers,config) {
-                    console.log("hay");
+                    console.log("hay now its deleted");
                     if (data){
 
                         alert(" delete post Success");
-                        window.location='home.html';//dari ara
+                        window.location='../home';//dari ara
                     }else {
                         alert("Failed delete Post");
                     }
                 })
-
-        });
-
     };
 
 
