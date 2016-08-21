@@ -153,6 +153,34 @@ router.get('/showpost/:idPost', function(req, res, next){
 
 });
 
+router.post('/addcomment', function(req, res, next) {
+  pool.getConnection(function(err, connection){
+    //if(err) throw err;
+    var post_id = req.body.post_id;
+    var content = req.body.content;
+
+    //console.log(user_id,content);
+    var d = new Date();
+    var fulldate = ""+d.getDate()+"-"+(d.getMonth()+1)+"-"+d.getFullYear();
+    var sqlForSelectList = "insert into comment (comment, post_id) values (\""+content+"\", \""+post_id+"\")";
+    console.log(sqlForSelectList);
+
+    connection.query(sqlForSelectList, function(err, rows){
+      if(err){
+        console.log(err);
+        if(err.code == "ER_NO_REFERENCED_ROW_2" || err.code == "ER_NO_REFERENCED_ROW") {
+          res.status(500).send("No user assigned with that id!");
+        }
+      }
+      else{
+        console.log("rows: "+ JSON.stringify(rows));
+        res.status(200).send("comment added!");
+      }
+      connection.release();
+    })
+  })
+});
+
 router.get('/dashboard', function(req, res){
   if(!req.session.user){
     return res.status(401).send();
