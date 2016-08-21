@@ -3,7 +3,7 @@
  */
 var module = angular.module('app',[]);
 module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
-    alert("hay");
+    //alert("hay");
     $http({
         method: 'GET',
         url: 'http://localhost:3000/showall/1'
@@ -35,7 +35,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
                 if (data) {
                     alert("Login Success :D ");
 
-                    window.location = "home.html"
+                    window.location = "home"
 
 
                 } else {
@@ -66,7 +66,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
                 if (data){
 
                     alert("Addiing Post Success");
-                    window.location='home.html';//dari ara
+                    window.location='home';//dari ara
                 }else {
                     alert("Failed Adding Post");
                 }
@@ -76,7 +76,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
 
     $scope.addnew=function (status, headers, config) {
         alert("clicked");
-        window.location='edit.html';
+        window.location='post';
     };
 
     $scope.delete=function (status,headers,config) {
