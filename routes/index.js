@@ -54,6 +54,7 @@ router.get('/showall/:userId', function(req, res, next){
   pool.getConnection(function(err, connection) {
     if(err) throw err;
     var sql = "SELECT * from blogpost where user_id="+req.params.userId;
+    console.log(sql);
     connection.query(sql, function(err, row){
       if(err) console.error("err: "+err);
       console.log("row: "+JSON.stringify(row));

@@ -35,9 +35,10 @@
     <div id="site_content">
       <div id="left_content">
         <p><button id="createnew" name="createnew" style="padding: 2pt" ng-click="addnew()">Create New Post</button></p>
-        <div id="blog_container" ng-repeat="post in posts">
-          {{post.title}}<br/>
-          {{post.content}}
+        <div id="blog_container" >
+          <h4><strong> Title: </strong>{{post.title}}<br/></h4>
+          <h4><strong> Post: </strong>{{post.post}}<br/></h4>
+          <!--<strong> Post: </strong>{{post.post}}<br><br>-->
 
 
           <!--<div class="blog"><h2>{{bulan}}</h2><h3>{{tanggal}}</h3></div>
@@ -53,7 +54,7 @@
           <p>{{blogcontent}}</p>
           <ul class="sf-menu" id="editpost">
             <li style="padding-right: 12pt"><a href="edit.html">Edit </a></li>
-            <li><a onlick="deletepost()">Delete</a></li>
+            <li><a href="home.html">Delete</a></li>
           </ul>
           <form style="padding-top: 20pt" ng-submit="submitcomment()">
             <br>Add Comment:<br/><br/>

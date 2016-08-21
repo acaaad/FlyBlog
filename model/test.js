@@ -6,7 +6,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
     alert("hay");
     $http({
         method: 'GET',
-        url: 'http://localhost:3000/showall/:userId'
+        url: 'http://localhost:3000/showall/1'
     })
         .success(function(data, status, headers, config) {
             if( data ) {
@@ -35,7 +35,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
                 if (data) {
                     alert("Login Success :D ");
 
-                    window.location = "blog.html"
+                    window.location = "home.html"
 
 
                 } else {
@@ -66,7 +66,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
                         if (data){
 
                         alert("Addiing Post Success");
-                        window.location='blog.html';//dari ara
+                        window.location='home.html';//dari ara
                     }else {
                         alert("Failed Adding Post");
                     }
