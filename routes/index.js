@@ -66,7 +66,7 @@ router.post('/validate', function(req, res, next) {
 router.get('/showall/:userId', function(req, res, next){
   pool.getConnection(function(err, connection) {
     if(err) throw err;
-    var sql = "SELECT * from blogpost where user_id="+req.params.userId;
+    var sql = "SELECT * from blogpost where user_id="+req.params.userId+" ORDER BY id DESC";
     console.log(sql);
     connection.query(sql, function(err, row){
       if(err) console.error("err: "+err);
