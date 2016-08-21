@@ -36,7 +36,7 @@
         <div id="left_content">
             <p><button id="createnew" name="createnew" style="padding: 2pt" ng-click="addnew()">Create New Post</button></p>
             <div id="blog_container"ng-repeat="post in posts" >
-                <strong> Title: </strong><a href="/FlyBlog/client/blog.html?id={{post.id}}">{{post.title}}</a><br/>
+                <strong> Title: </strong><a href="/showpost/{{post.id}}">{{post.title}}</a><br/>
                 <strong> Post: </strong>{{post.post}}<br><br>
 
 

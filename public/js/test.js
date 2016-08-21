@@ -18,6 +18,23 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
         .error(function(data, status, headers, config) {
             console.log(status);
         });
+
+    $http({
+        method: 'GET',
+        url:'http://localhost:3000/showpost/:idPost'
+
+    })
+        .success(function (data, status, headers, config) {
+            if (data){
+                alert("hayyyyyyyy");
+                window.location="blog.html";
+
+
+            }else {
+                alert("failed");
+            }
+        });
+
     $scope.islogin=function () {
         //alert("cclicked");
 
@@ -78,7 +95,27 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
         alert("clicked");
         window.location='post';
     };
-
+    // $scope.move=function () {
+    //     alert("cliced");
+    //     $http({
+    //         method : 'POST',
+    //         url : 'http://localhost:3000/showpost/:idPost',
+    //         data: {
+    //         //     //'user_id': 1,//textdapet dari ara
+    //         //     'content': $scope.blogtext,//dapet dari ara
+    //         //     'title': $scope.titletext
+    //         // }
+    //             .success(function (data,status,headers,config){
+    //                 if (data){
+    //                     alert("hayyy");
+    //                     window.location='blog.html'
+    //                 }else {
+    //                     alert("Failed");
+    //                 }
+    //     })
+    // })
+    //
+    // };
     $scope.delete=function (status,headers,config) {
         alert("hay delete func");
         $http({
