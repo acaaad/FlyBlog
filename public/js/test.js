@@ -19,21 +19,21 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
             console.log(status);
         });
 
-    $http({
-        method: 'GET',
-        url:'http://localhost:3000/showpost/:idPost'
-
-    })
-        .success(function (data, status, headers, config) {
-            if (data){
-                alert("hayyyyyyyy");
-                window.location="blog.ejs";
-
-
-            }else {
-                alert("failed");
-            }
-        });
+    // $http({
+    //     method: 'GET',
+    //     url:'http://localhost:3000/showpost/:idPost'
+    //
+    // })
+    //     .success(function (data, status, headers, config) {
+    //         if (data){
+    //             alert("hayyyyyyyy");
+    //             window.location="blog.ejs";
+    //
+    //
+    //         }else {
+    //             alert("failed");
+    //         }
+    //     });
 
     $scope.islogin=function () {
         //alert("cclicked");

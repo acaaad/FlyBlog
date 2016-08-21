@@ -123,24 +123,31 @@ router.post('/addpost', function(req, res, next) {
 });
 
 router.get('/showpost/:idPost', function(req, res, next){
-  pool.getConnection(function(err, connection) {
-    if(err) throw err;
-    var sql = "SELECT * from blogpost where id=\""+req.params.idPost+"\"";
-    connection.query(sql, function(err, row){
-      if(err) console.error("err: "+err);
-      if(row.length==0){
-        res.status(500).send("no post with that id");
-      }
-      else{
-        //console.log("row: "+JSON.stringify(row));
-        var context = JSON.stringify(row);
-        var jeson = JSON.parse(context);
-        res.render('blog', {post: jeson});
-      }
+  if(!req.session.user){
+    //res.sendFile(path.join(__dirname+'/../public/login.html'));
+    res.redirect('../login');
+  }
+  else{
+    pool.getConnection(function(err, connection) {
+      if(err) throw err;
+      var sql = "SELECT * from blogpost where id=\""+req.params.idPost+"\"";
+      connection.query(sql, function(err, row){
+        if(err) console.error("err: "+err);
+        if(row.length==0){
+          res.status(500).send("no post with that id");
+        }
+        else{
+          //console.log("row: "+JSON.stringify(row));
+          var context = JSON.stringify(row);
+          var jeson = JSON.parse(context);
+          res.render('blog', {post: jeson});
+        }
 
-      connection.release();
+        connection.release();
+      })
     })
-  })
+  }
+
 });
 
 router.get('/dashboard', function(req, res){
