@@ -60,11 +60,12 @@
           <p>{{blogcontent}}</p>
           <ul class="sf-menu" id="editpost">
             <li style="padding-right: 12pt"><a href="edit.html">Edit </a></li>
-            <li><a href="home.html">Delete</a></li>
+            <li><a href="/delete/<%= post[0]["id"] %>">Delete</a></li>
           </ul>
-          <form style="padding-top: 20pt" ng-submit="submitcomment()">
+          <form style="padding-top: 20pt" ng-submit="comments()">
             <br>Add Comment:<br/><br/>
-            <textarea id="addcomment" cols="55" rows="5"></textarea><br/><br/>
+            <textarea id="addcomment" ng-model="commenteu" cols="55" rows="5"></textarea><br/><br/>
+            <input type="hidden" ng-model="postid" value="<%= post[0]["id"] %>">
             <input type="submit" value="Submit" style="padding: 3pt"><br/><br/>
           </form>
           <hr>
