@@ -19,19 +19,19 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
             console.log(status);
         });
     $scope.islogin=function () {
-    //alert("cclicked");
+        //alert("cclicked");
 
         $http({
             method: 'POST',
             url: 'http://localhost:3000/validate',
-           data: { password: $scope.passx , name: $scope.passx}
-        //   data:{name : 'aaaa', password:'aaaaa'}
+            data: { password: $scope.passx , name: $scope.passx}
+            //   data:{name : 'aaaa', password:'aaaaa'}
 
 
         })
             .success(function (data ,status, headers, config) {
                 console.log("sucsess");
-               // alert($scope.iduser);
+                // alert($scope.iduser);
                 if (data) {
                     alert("Login Success :D ");
 
@@ -49,7 +49,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
             });
     };
     $scope.addpost=function (data,status,headers,config) {
-       alert("clickes");
+        alert("clickes");
         $http({
             method: 'POST',
             url: 'http://localhost:3000/addpost',
@@ -58,26 +58,53 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
                 'content': $scope.blogtext,//dapet dari ara
                 'title': $scope.titletext
             }
-                //'id': $scope.iduser//gatau dari mana
+            //'id': $scope.iduser//gatau dari mana
         })
 
-                .success(function (data,status,headers,config) {
-                    console.log("hay");
-                        if (data){
+            .success(function (data,status,headers,config) {
+                console.log("hay");
+                if (data){
 
-                        alert("Addiing Post Success");
-                        window.location='home.html';//dari ara
-                    }else {
-                        alert("Failed Adding Post");
-                    }
-                })
+                    alert("Addiing Post Success");
+                    window.location='home.html';//dari ara
+                }else {
+                    alert("Failed Adding Post");
+                }
+            })
 
-        };
+    };
 
     $scope.addnew=function (status, headers, config) {
         alert("clicked");
         window.location='edit.html';
-    }
+    };
+
+    $scope.delete=function (status,headers,config) {
+        alert("hay delete func");
+        $http({
+
+            method: 'POST',
+            url: 'http://localhost:3000/delete/:idPost',
+            data: {
+
+                'content': $scope.blogtext,//dapet dari ara
+                'title': $scope.titletext
+            }
+                .success(function (data,status,headers,config) {
+                    console.log("hay");
+                    if (data){
+
+                        alert(" delete post Success");
+                        window.location='home.html';//dari ara
+                    }else {
+                        alert("Failed delete Post");
+                    }
+                })
+
+        });
+
+    };
+
 
     //$scope.showpost=function (data,status,headers,config) {
 
