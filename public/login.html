@@ -9,7 +9,8 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/dark.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-resource.js"></script>
     <script src="js/test.js"></script>
@@ -40,8 +41,19 @@
     </div>
 </div>
 <!-- end content -->
++
+<
+.success(function (data,status,headers,config) {
+console.log("hay");
+if (data){
 
-<!-- begin footer -->
+alert("Addiing Post Success");
+window.location='home.html';//dari ara
+}else {
+alert("Failed Adding Post");
+}
+})
+!-- begin footer -->
 <footer>
     <p>Copyright &copy; 2016 Group1</p>
 </footer>

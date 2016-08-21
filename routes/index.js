@@ -6,7 +6,7 @@ var pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   database: 'blogdb',
-  password: 'arshad'
+  password: '12345'
 });
 var path = require("path");
 
