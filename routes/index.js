@@ -173,6 +173,7 @@ router.post('/addcomment', function(req, res, next) {
         console.log("rows: "+ JSON.stringify(rows));
         res.status(200).send("comment added!");
       }
+      
       connection.release();
     })
   })
