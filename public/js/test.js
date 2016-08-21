@@ -41,7 +41,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
         $http({
             method: 'POST',
             url: 'http://localhost:3000/validate',
-            data: { password: $scope.passx , name: $scope.passx}
+            data: { password: $scope.passx , name: $scope.isuder}
             //   data:{name : 'aaaa', password:'aaaaa'}
 
 
@@ -92,28 +92,28 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
     };
 
     $scope.comments=function (data,status,headers,config) {
-        alert("clickedcomment")
+        alert("clickedcomment");
         $http({
-            methode:"POST",
-            url:
-            data  {
-                'commentid'=$scope.commentid,
-                 'content'=$scope.content
-
-        }
-        )}
+            method: "POST",
+            url:'http://localhost:3000/addcomment',
+            data : {
+                'id': $scope.postid,
+                'content':$scope.commenteu
+            }
+        })
         .success(function (data,status,headers,config) {
             console.log("hay");
             if (data){
 
-                alert("Addiing Post Success");
-                window.location='home';//dari ara
+                alert("Addiing Comment Success");
+                window.location='/showpost/'+$scope.post_id;//dari ara
             }else {
                 alert("Failed Adding Post");
             }
 
         })
-    
+};
+
 
     $scope.addnew=function (status, headers, config) {
         alert("clicked");

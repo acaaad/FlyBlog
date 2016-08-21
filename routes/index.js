@@ -154,15 +154,13 @@ router.get('/showpost/:idPost', function(req, res, next){
 });
 
 router.post('/addcomment', function(req, res, next) {
+
   pool.getConnection(function(err, connection){
     //if(err) throw err;
-    var post_id = req.body.post_id;
-    var content = req.body.content;
-
-    //console.log(user_id,content);
-    var d = new Date();
-    var fulldate = ""+d.getDate()+"-"+(d.getMonth()+1)+"-"+d.getFullYear();
-    var sqlForSelectList = "insert into comment (comment, post_id) values (\""+content+"\", \""+post_id+"\")";
+    var post_id = req.body.postid;
+    var content = req.body.comment;
+    console.log(post_id, content);
+    var sqlForSelectList = "insert into comment (comment, post_id) values (\""+content+"\", "+post_id+")";
     console.log(sqlForSelectList);
 
     connection.query(sqlForSelectList, function(err, rows){
