@@ -62,14 +62,14 @@
             <li style="padding-right: 12pt"><a href="edit.html">Edit </a></li>
             <li><a href="/delete/<%= post[0]["id"] %>">Delete</a></li>
           </ul>
-          <form style="padding-top: 20pt" ng-submit="comments()">
+          <form style="padding-top: 20pt">
             <br>Add Comment:<br/><br/>
             <textarea id="addcomment" ng-model="commenteu" cols="55" rows="5"></textarea><br/><br/>
-            <input type="hidden" ng-model="postid" value="<%= post[0]["id"] %>">
-            <input type="submit" value="Submit" style="padding: 3pt"><br/><br/>
+            <!--<input type="hidden" ng-model="postideu" value="4"/>-->
+            <input type="submit" value="Submit" ng-click="comments(<%= post[0]["id"] %>)" style="padding: 3pt"><br/><br/>
           </form>
           <hr>
-          <div class="commentsection" id="commentsection">
+          <div class="commentsection" id="commentsection" ng-repeat="comment in coms">
             <p>
               <b>{{commentID}}:</b><br/>
               {{comment}}<br/></p>

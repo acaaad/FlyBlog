@@ -19,21 +19,22 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
             console.log(status);
         });
 
-    // $http({
-    //     method: 'GET',
-    //     url:'http://localhost:3000/showpost/:idPost'
-    //
-    // })
-    //     .success(function (data, status, headers, config) {
-    //         if (data){
-    //             alert("hayyyyyyyy");
-    //             window.location="blog.ejs";
-    //
-    //
-    //         }else {
-    //             alert("failed");
-    //         }
-    //     });
+    $http({
+        method:'GET',
+        url:'http://showcomment/1'
+    })
+        .success(function (data,status,headers,config) {
+            if (data){
+                alert("comment func")
+                $scope.coms=data;
+            }
+            else {
+
+            }
+        })
+        .error(function (data,status,headers,config) {
+            console.log(status);
+        })
 
     $scope.islogin=function () {
         //alert("cclicked");
@@ -91,13 +92,13 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
 
     };
 
-    $scope.comments=function (data,status,headers,config) {
+    $scope.comments=function (id) {
         alert("clickedcomment");
         $http({
             method: "POST",
             url:'http://localhost:3000/addcomment',
             data : {
-                'id': $scope.postid,
+                'postid': id,
                 'content':$scope.commenteu
             }
         })
@@ -106,7 +107,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
             if (data){
 
                 alert("Addiing Comment Success");
-                window.location='/showpost/'+$scope.post_id;//dari ara
+                window.location='/showpost/'+id;//dari ara
             }else {
                 alert("Failed Adding Post");
             }

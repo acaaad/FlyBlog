@@ -153,13 +153,41 @@ router.get('/showpost/:idPost', function(req, res, next){
 
 });
 
+router.get('/showcomment/:idPost', function(req, res, next){
+    if(!req.session.user){
+        //res.sendFile(path.join(__dirname+'/../public/login.html'));
+        res.redirect('../login');
+    }
+    else{
+        pool.getConnection(function(err, connection) {
+            if(err) throw err;
+            var sql = "SELECT * from comment where post_id=\""+req.params.idPost+"\"";
+            connection.query(sql, function(err, row){
+                if(err) console.error("err: "+err);
+                if(row.length==0){
+                    res.status(500).send("no post with that id");
+                }
+                else{
+                    //console.log("row: "+JSON.stringify(row));
+                    var context = JSON.stringify(row);
+                    console.log(context);
+                    res.json(row);
+                }
+
+                connection.release();
+            })
+        })
+    }
+
+});
+
 router.post('/addcomment', function(req, res, next) {
 
   pool.getConnection(function(err, connection){
     //if(err) throw err;
     var post_id = req.body.postid;
-    var content = req.body.comment;
-    console.log(post_id, content);
+    var content = req.body.content;
+    console.log(req.body);
     var sqlForSelectList = "insert into comment (comment, post_id) values (\""+content+"\", "+post_id+")";
     console.log(sqlForSelectList);
 
