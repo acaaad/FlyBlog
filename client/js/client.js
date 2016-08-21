@@ -61,6 +61,7 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
 
         })
     }
+   // $scope.delete=
 }]);
 // $scope.validate = function(){
 //     console.log("HIA");

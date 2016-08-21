@@ -12,9 +12,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-resource.js"></script>
+  <script src="../model/test.js"></script>
 </head>
 
-<body ng-app="myApp" ng-controller="MainCtrl">
+<body ng-app="app" ng-controller="MainCtrl">
   <div id="main">
 
     <!-- begin header -->
@@ -33,16 +34,18 @@
     <!-- begin content -->
     <div id="site_content">
       <div id="left_content">
-        <p><button onclick="editpost.html" style="padding: 2pt">Create New Post</button></p>
-        <div id="blog_container" ng-repeat="">
+        <p><button id="createnew" name="createnew" style="padding: 2pt" ng-click="addnew()">Create New Post</button></p>
+        <div id="blog_container" >
+          <h4><strong> Title: </strong>{{post.title}}<br/></h4>
+          <h4><strong> Post: </strong>{{post.post}}<br/></h4>
+          <!--<strong> Post: </strong>{{post.post}}<br><br>-->
 
-          <div class="blog"><h2>{{bulan}}</h2><h3>{{tanggal}}</h3></div>
-          <h4 class="select"><a onclick="showpost()">{{blogtitle}}</a></h4>
-          <p>{{contentpreview}} <a onclick="showpost()">read more.....</a></p>
-          <!--yang dibawah ini contoh doang yak-->
-          <div class="blog"><h2>Dec</h2><h3>25th</h3></div>
-          <h4><a href="blog_2510.html">{{blogtitle}}</a></h4>
-          <p>{{contentpreview}} <a href="blog_2510.html">read more..... </a></p>
+
+          <!--<div class="blog"><h2>{{bulan}}</h2><h3>{{tanggal}}</h3></div>
+          <h4 class="select"><a onclick="showpost()">{{pos}}</a></h4>
+          <p>{{contentpreview}} <a onclick="showpost()">read more.....</a></p>-->
+
+
         </div>
       </div>
       <div id="right_content">
@@ -51,7 +54,7 @@
           <p>{{blogcontent}}</p>
           <ul class="sf-menu" id="editpost">
             <li style="padding-right: 12pt"><a href="edit.html">Edit </a></li>
-            <li><a onlick="deletepost()">Delete</a></li>
+            <li><a href="home.html">Delete</a></li>
           </ul>
           <form style="padding-top: 20pt" ng-submit="submitcomment()">
             <br>Add Comment:<br/><br/>
@@ -63,6 +66,8 @@
             <p>
               <b>{{commentID}}:</b><br/>
               {{comment}}<br/></p>
+
+
             <hr>
           </div>
         </div>
