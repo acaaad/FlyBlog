@@ -34,7 +34,7 @@
     <!-- begin content -->
     <div id="site_content">
       <div id="left_content">`
-        <p><button id="createnew" name="createnew" style="padding: 2pt" ng-click="addnew()">Create New Post</button></p>
+        <!--<p><button id="createnew" name="createnew" style="padding: 2pt" ng-click="addnew()">Create New Post</button></p>-->
         <div id="blog_container" >
           <h4><strong> Title: </strong><%= post[0]["title"] %> <br/></h4>
           <h4><strong> Post: </strong><%= post[0]["post"] %><br/></h4>
@@ -69,13 +69,14 @@
             <input type="submit" value="Submit" ng-click="comments(<%= post[0]["id"] %>)" style="padding: 3pt"><br/><br/>
           </form>
           <hr>
-          <div class="commentsection" id="commentsection" ng-repeat="comment in coms">
-            <p>
-              <b>{{commentID}}:</b><br/>
-              {{comment}}<br/></p>
+          <div ng-init="showcomment(<%= post[0]["id"] %>)">
+            <div class="commentsection" id="commentsection" ng-repeat="commenteu in coms">
+              <p>
+                <b>{{commenteu.comment}}</b><br/></p>
 
 
-            <hr>
+              <hr>
+            </div>
           </div>
         </div>
       </div>

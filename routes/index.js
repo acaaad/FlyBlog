@@ -161,7 +161,7 @@ router.get('/showcomment/:idPost', function(req, res, next){
     else{
         pool.getConnection(function(err, connection) {
             if(err) throw err;
-            var sql = "SELECT * from comment where post_id=\""+req.params.idPost+"\"";
+            var sql = "SELECT * from comment where post_id=\""+req.params.idPost+"\" order by id desc";
             connection.query(sql, function(err, row){
                 if(err) console.error("err: "+err);
                 if(row.length==0){

@@ -19,22 +19,6 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
             console.log(status);
         });
 
-    $http({
-        method:'GET',
-        url:'http://showcomment/1'
-    })
-        .success(function (data,status,headers,config) {
-            if (data){
-                alert("comment func")
-                $scope.coms=data;
-            }
-            else {
-
-            }
-        })
-        .error(function (data,status,headers,config) {
-            console.log(status);
-        })
 
     $scope.islogin=function () {
         //alert("cclicked");
@@ -93,7 +77,6 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
     };
 
     $scope.comments=function (id) {
-        alert("clickedcomment");
         $http({
             method: "POST",
             url:'http://localhost:3000/addcomment',
@@ -160,28 +143,26 @@ module.controller('MainCtrl', ['$scope','$http',function($scope,$http){
                 })
     };
 
+    $scope.showcomment=function (id) {
+        $http({
+            method:'GET',
+            url:'http://localhost:3000/showcomment/'+id
+        })
+            .success(function (data,status,headers,config) {
+                if (data){
+                    $scope.coms=data;
+                }
+                else {
+
+                }
+            })
+            .error(function (data,status,headers,config) {
+                console.log(status);
+            })
+    };
+
 
     //$scope.showpost=function (data,status,headers,config) {
 
     //}
 }]);
-// $scope.validate = function(){
-//     console.log("HIA");
-//     $http({
-//         method: 'GET',
-//         url: 'http://localhost:3000/show'
-//     })
-//         .success(function(data, status, headers, config){
-//             if(data){
-//                 $scope.members= data;
-//             }
-//             else{
-//
-//             }
-//         })
-//
-//         .error(function(data, status, headers, config){
-//             console.log(status);
-//         })
-//
-// }
